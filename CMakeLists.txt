@@ -12,7 +12,7 @@ file(GLOB SRC_FILES src/*.cpp)
 file(GLOB TEST_FILES src/*.cpp)
 list (REMOVE_ITEM TEST_FILES /home/tqd/Code/GITR-1/src/gitr.cpp)
 message("${TEST_FILES}")
-file( GLOB HEADER_FILES include/*.h )
+file( GLOB HEADER_FILES include/* )
 add_library(YourLib ${TEST_FILES})
 find_package(Thrust REQUIRED)
 find_package(NetCDF COMPONENTS CXX REQUIRED)
@@ -29,6 +29,7 @@ include_directories(${THRUST_INCLUDE_DIRS})
 include_directories(${LIBCONFIGPP_INCLUDE_DIR})
 # Simulation defines
 add_definitions(-DUSE_CUDA=${USE_CUDA}
+	-DUSE_DOUBLE=${USE_DOUBLE}
         -DUSE_MPI=${USE_MPI}
         -DUSEIONIZATION=${USEIONIZATION}
         -DUSERECOMBINATION=${USERECOMBINATION}

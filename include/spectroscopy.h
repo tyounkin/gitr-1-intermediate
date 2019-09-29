@@ -10,6 +10,7 @@
 #include "Particles.h"
 #include "Boundary.h"
 #include <cmath>
+#include "gitr_math.hpp"
 #include <vector>
 #if USE_CUDA >0
 #if __CUDA_ARCH__ < 600
@@ -74,7 +75,7 @@ void operator()(std::size_t indx) const {
     float dim1 = particlesPointer->xprevious[indx];
 #else
   #if USECYLSYMM > 0
-    float dim1 = std::sqrt(x*x + y*y);
+    float dim1 = gitr_math::function::sqrt(x*x + y*y);
     #else
     float dim1 = x;
     #endif
