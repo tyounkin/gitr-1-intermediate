@@ -37,9 +37,9 @@ float get_rand(curandState *state,int indx)
 CUDA_CALLABLE_MEMBER_HOST CUDA_CALLABLE_MEMBER_DEVICE
 float get_rand(std::mt19937 *state,int indx)
 {
-        std::uniform_real_distribution<float> dist(0.0, 1.0);
+        std::uniform_real_distribution<float> dist(-1.0, 0.0);
 	std::mt19937 this_state = state[indx];
-        float r1 = dist(this_state);
+        float r1 = -dist(this_state);
 	state[indx] = this_state;
 	return r1;
 }
